@@ -350,21 +350,15 @@ export default function PricingPage() {
                       </List>
                     </div>
 
-                    {isThisPlanSubmitting ? (
-                      <InlineStack align="center" gap="200">
-                        <Spinner size="small" />
-                        <Text>Processing...</Text>
-                      </InlineStack>
-                    ) : (
-                      <Button
-                        fullWidth
-                        variant={isCurrent ? "secondary" : "primary"}
-                        disabled={isCurrent || isSubmitting}
-                        onClick={() => handleSubscribe(plan.id)}
-                      >
-                        {buttonLabel}
-                      </Button>
-                    )}
+                    <Button
+                      fullWidth
+                      variant={isCurrent ? "secondary" : "primary"}
+                      disabled={isCurrent}
+                      loading={isThisPlanSubmitting}
+                      onClick={() => handleSubscribe(plan.id)}
+                    >
+                      {isThisPlanSubmitting ? "Processing..." : buttonLabel}
+                    </Button>
                   </BlockStack>
                 </Card>
               </Grid.Cell>
